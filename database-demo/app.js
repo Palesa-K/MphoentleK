@@ -1,0 +1,17 @@
+"use strict";
+// 2025 coursework sample rows transcribed from the original GA5 SQL INSERT statement.
+// This is a standalone browser reconstruction, not a MySQL connection or live city system.
+const rows = [{"id": 1, "type": "Burst Pipe", "description": "Pipe burst on Main Road", "zone": "Zone 1", "status": "Pending", "date": "2025-09-01"}, {"id": 2, "type": "Pothole", "description": "Large pothole near taxi rank", "zone": "Zone 3", "status": "Pending", "date": "2025-08-28"}, {"id": 3, "type": "Faulty Streetlight", "description": "Streetlight not working", "zone": "Zone 4", "status": "Completed", "date": "2025-09-25"}, {"id": 4, "type": "Pothole", "description": "Small pothole in residential street", "zone": "Zone 1", "status": "Pending", "date": "2025-09-12"}, {"id": 5, "type": "Burst Pipe", "description": "Water leak near hospital", "zone": "Zone 2", "status": "Pending", "date": "2025-09-14"}, {"id": 6, "type": "Burst Pipe", "description": "Low water pressure", "zone": "Zone 3", "status": "Completed", "date": "2025-09-09"}, {"id": 7, "type": "Faulty Streetlight", "description": "Power outage in a neighbourhood", "zone": "Zone 1", "status": "Pending", "date": "2025-09-16"}, {"id": 8, "type": "Faulty Streetlight", "description": "Damaged electrical substation", "zone": "Zone 3", "status": "Completed", "date": "2025-09-20"}, {"id": 9, "type": "Public Toilets", "description": "Broken public toilet facilities", "zone": "Zone 4", "status": "Pending", "date": "2025-08-14"}];
+const statusChoice=document.querySelector('#statusFilter'),zoneChoice=document.querySelector('#zoneFilter'),search=document.querySelector('#search');
+const tbody=document.querySelector('#requestRows'),n=document.querySelector('#rowCount');
+function selected(){const q=search.value.toLowerCase().trim();return rows.filter(r=>(statusChoice.value==='All'||r.status===statusChoice.value) && (zoneChoice.value==='All'||r.zone===zoneChoice.value) && [r.type,r.description,r.zone,r.status].join(' ').toLowerCase().includes(q));}
+function textCell(tr,v){const td=document.createElement('td');td.textContent=v;tr.appendChild(td);}
+function render(){let rr=selected();tbody.replaceChildren();for(const r of rr){let tr=document.createElement('tr');textCell(tr,r.id);textCell(tr,r.type);textCell(tr,r.zone);textCell(tr,r.status);textCell(tr,r.date);tbody.appendChild(tr)}n.textContent=rr.length+' of '+rows.length+' sample records';}
+[statusChoice,zoneChoice,search].forEach(e=>e.addEventListener('input',render));
+function total(flag){return rows.filter(r=>r.status===flag).length}
+document.querySelector('#total').textContent=rows.length;
+document.querySelector('#pending').textContent=total('Pending');
+document.querySelector('#completed').textContent=total('Completed');
+const stats={};for(const r of rows.filter(r=>r.status==='Pending')){stats[r.zone]=(stats[r.zone]||0)+1}
+const bars=document.querySelector('#bars');Object.entries(stats).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([zone,count])=>{const li=document.createElement('li');const title=document.createElement('span');title.textContent=zone;const outer=document.createElement('div');outer.className='bar-track';const inner=document.createElement('div');inner.className='bar-fill';inner.style.width=(count/Math.max(...Object.values(stats))*100)+'%';inner.title=count+' pending requests';outer.appendChild(inner);const val=document.createElement('b');val.textContent=count;li.append(title,outer,val);bars.appendChild(li)});
+render();

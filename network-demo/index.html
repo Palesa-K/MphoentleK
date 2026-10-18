@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEANT2 Route Explorer | Engineering Portfolio</title><link rel="stylesheet" href="../styles.css">
+<style>
+.route-frame{padding:30px;background:white;border:1px solid #dce8df;border-radius:20px;margin:30px 0 50px}
+.route-controls{display:flex;flex-wrap:wrap;align-items:end;gap:15px;margin:24px 0 20px}.route-controls label{display:grid;gap:6px;color:#355647;font-size:.89rem;font-weight:750}.route-controls select{border:1px solid #bdd4c2;padding:10px 16px;font:inherit;border-radius:9px;background:white;min-width:110px}
+.route-status{background:#eaf8ef;border-radius:12px;padding:14px 18px;color:#173d2a;font-weight:700;margin:12px 0 18px}
+#network-svg{width:100%;height:auto;max-height:650px;background:#f9fcfa;border:1px solid #e2efe5;border-radius:15px;display:block}
+.route-key{display:flex;flex-wrap:wrap;gap:18px;margin:12px 0}.route-key span{color:#586b5e;font-size:.86rem}.route-key b{color:#187848}
+@media(max-width:650px){.route-frame{padding:16px} .route-controls{gap:8px}}
+</style></head><body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="logo">MK</span><span>Mphoentle Keikabile</span></a><nav class="nav-links"><a href="../index.html#projects">All projects</a><a href="../projects/traffic-engineering.html">Project details</a></nav></div></header>
+<main class="container"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../projects/traffic-engineering.html">Traffic Engineering</a> / Interactive route explorer</div>
+<div class="route-frame"><div class="eyebrow">Browser-based project visualisation</div><h1 style="font-size:clamp(2rem,4vw,3rem)">GEANT2 Route Explorer</h1><p>Choose a source and destination. This example uses Dijkstra's algorithm to find the minimum-weight path through the network topology supplied with the coursework. It works without GNS3 or any external libraries.</p>
+<div class="route-controls"><label>Source node<select id="source" aria-label="Source node"></select></label><label>Destination node<select id="target" aria-label="Destination node"></select></label></div>
+<div class="route-status" id="result" role="status">Calculating route…</div><svg id="network-svg" viewBox="0 0 900 700" role="img" aria-label="Graph network with highlighted shortest path"></svg>
+<div class="route-key"><span><b>●</b> Node / router</span><span><b>━━</b> Highlighted minimum-cost route</span><span>Grey lines: available links</span></div>
+<p class="small-note">Data provenance: the provided <code>GEANT2_Links.csv</code> includes 32 nodes and 55 unique links. The assignment brief says 54 links; this demonstration follows the supplied CSV and labels its result as a reconstruction rather than a historical performance claim. Link weights represent abstract costs, not measured real-world latency.</p>
+<div class="buttons"><a class="btn primary" href="../projects/traffic-engineering.html">← Project explanation</a><a class="btn outline" download href="../network-code/GEANT2_Links.csv">Download input data</a></div>
+</div></main><footer class="site-footer"><div class="container footer-row"><div><strong>Mphoentle Keikabile</strong><p>Computer Engineering academic portfolio</p></div><a href="../index.html#projects">View all projects</a></div></footer><script src="graph-data.js"></script><script src="routes.js"></script></body></html>

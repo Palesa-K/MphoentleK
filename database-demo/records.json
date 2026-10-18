@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "type": "Burst Pipe",
+    "description": "Pipe burst on Main Road",
+    "zone": "Zone 1",
+    "status": "Pending",
+    "date": "2025-09-01"
+  },
+  {
+    "id": 2,
+    "type": "Pothole",
+    "description": "Large pothole near taxi rank",
+    "zone": "Zone 3",
+    "status": "Pending",
+    "date": "2025-08-28"
+  },
+  {
+    "id": 3,
+    "type": "Faulty Streetlight",
+    "description": "Streetlight not working",
+    "zone": "Zone 4",
+    "status": "Completed",
+    "date": "2025-09-25"
+  },
+  {
+    "id": 4,
+    "type": "Pothole",
+    "description": "Small pothole in residential street",
+    "zone": "Zone 1",
+    "status": "Pending",
+    "date": "2025-09-12"
+  },
+  {
+    "id": 5,
+    "type": "Burst Pipe",
+    "description": "Water leak near hospital",
+    "zone": "Zone 2",
+    "status": "Pending",
+    "date": "2025-09-14"
+  },
+  {
+    "id": 6,
+    "type": "Burst Pipe",
+    "description": "Low water pressure",
+    "zone": "Zone 3",
+    "status": "Completed",
+    "date": "2025-09-09"
+  },
+  {
+    "id": 7,
+    "type": "Faulty Streetlight",
+    "description": "Power outage in a neighbourhood",
+    "zone": "Zone 1",
+    "status": "Pending",
+    "date": "2025-09-16"
+  },
+  {
+    "id": 8,
+    "type": "Faulty Streetlight",
+    "description": "Damaged electrical substation",
+    "zone": "Zone 3",
+    "status": "Completed",
+    "date": "2025-09-20"
+  },
+  {
+    "id": 9,
+    "type": "Public Toilets",
+    "description": "Broken public toilet facilities",
+    "zone": "Zone 4",
+    "status": "Pending",
+    "date": "2025-08-14"
+  }
+]
